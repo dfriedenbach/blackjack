@@ -29,6 +29,8 @@ class window.App extends Backbone.Model
     , @
 
   reset: ->
+    if @get('deck').length <= 13
+      @set 'deck', new Deck()
     @set 'playerHand', @get('deck').dealPlayer()
     @set 'dealerHand', @get('deck').dealDealer()
     @playerEventListeners()
