@@ -7,7 +7,7 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop())
 
   hasAce: -> @reduce (memo, card) ->
-    memo or card.get('value') is 1
+    memo or card.get('value') is 1 and card.get('revealed') is true
   , 0
 
   minScore: -> @reduce (score, card) ->
