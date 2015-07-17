@@ -5,7 +5,9 @@ class window.App extends Backbone.Model
     @set 'deck', deck = new Deck()
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
+    @playerEventListeners()
 
+  playerEventListeners: ->
     @get 'playerHand'
     .on 'stand', ->
       @get 'dealerHand'
@@ -18,4 +20,16 @@ class window.App extends Backbone.Model
         alert 'Push'
       else
         alert 'Player wins'
+      @reset()
     , @
+
+    @get 'playerHand'
+    .on 'gameover', ->
+      @reset()
+    , @
+
+  reset: ->
+    @set 'playerHand', @get('deck').dealPlayer()
+    @set 'dealerHand', @get('deck').dealDealer()
+    @playerEventListeners()
+    @trigger 'reset'

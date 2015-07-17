@@ -10,6 +10,7 @@ class window.Hand extends Backbone.Collection
         alert 'Dealer bust'
       else
         alert 'Player bust'
+        @trigger 'gameover'
 
   stand: ->
     @trigger 'stand'
