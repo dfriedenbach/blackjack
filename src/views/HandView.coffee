@@ -16,6 +16,3 @@ class window.HandView extends Backbone.View
       @$('.score').text "#{@collection.scores()[0]}, #{@collection.scores()[1]}"
     else
       @$('.score').text @collection.scores()[0]
-    if @collection.scores()[0] > 21
-      alert 'Player busts!'
-
