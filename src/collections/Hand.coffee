@@ -6,6 +6,18 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop())
 
+  stand: ->
+    @trigger 'stand'
+
+  dealerTurn: ->
+    @at(0).flip()
+    score = if @scores()[1] > 21 then @scores()[0] else @scores()[1]
+    console.log score
+    while score < 17
+      @hit()
+      score = if @scores()[1] > 21 then @scores()[0] else @scores()[1]
+
+
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1 and card.get('revealed') is true
   , 0

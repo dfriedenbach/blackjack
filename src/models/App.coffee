@@ -6,3 +6,8 @@ class window.App extends Backbone.Model
     @set 'playerHand', deck.dealPlayer()
     @set 'dealerHand', deck.dealDealer()
 
+    @get 'playerHand'
+    .on 'stand', ->
+      @get 'dealerHand'
+      .dealerTurn()
+    , @
