@@ -1,6 +1,7 @@
 class window.AppView extends Backbone.View
   template: _.template '
     <button class="hit-button">Hit</button> <button class="stand-button">Stand</button> <button class="deal-button">Deal</button>
+    <p class="message-box"><%= message %></p>
     <p class="current-money">Current money: $<%= money %></p>
     <p class="current-bet">Current bet: $<%= bet %></p>
     <span class="make-bet">Make a bet: </span><input class="make-bet" name="make-bet" type="number" value="5" min="5" max="50" step="1" />
@@ -19,6 +20,10 @@ class window.AppView extends Backbone.View
     @model.on 'reset', ->
       @render()
     , @
+
+    # @model.on 'dealer-win', ->
+    #   $('.message-box').text('Dealer wins').fadeTo(1000, 1)
+    # , @
 
   render: ->
     @$el.children().detach()

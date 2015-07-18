@@ -5,12 +5,8 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     @add(@deck.pop())
-    if @minScore() > 21
-      if @isDealer
-        alert 'Dealer bust'
-      else
-        alert 'Player bust'
-        @trigger 'gameover'
+    if @minScore() > 21 and not @isDealer
+      @trigger 'gameover'
 
   stand: ->
     @trigger 'stand'
