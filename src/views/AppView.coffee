@@ -21,9 +21,17 @@ class window.AppView extends Backbone.View
       @render()
     , @
 
-    # @model.on 'dealer-win', ->
-    #   $('.message-box').text('Dealer wins').fadeTo(1000, 1)
-    # , @
+    @model.on 'playing', ->
+      $('.deal-button').css 'visibility', 'hidden'
+      $('.hit-button').css 'visibility', 'visible'
+      $('.stand-button').css 'visibility', 'visible'
+    , @
+
+    @model.on 'game-over', ->
+      $('.deal-button').css 'visibility', 'visible'
+      $('.hit-button').css 'visibility', 'hidden'
+      $('.stand-button').css 'visibility', 'hidden'
+    , @
 
   render: ->
     @$el.children().detach()

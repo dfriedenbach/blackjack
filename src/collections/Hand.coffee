@@ -7,7 +7,7 @@ class window.Hand extends Backbone.Collection
     newCard = @deck.pop()
     @add(newCard)
     if @minScore() > 21 and not @isDealer
-      @trigger 'gameover'
+      @trigger 'player-bust'
     newCard
 
   stand: ->

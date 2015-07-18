@@ -31,7 +31,7 @@ class window.App extends Backbone.Model
     , @
 
     @get 'playerHand'
-    .on 'gameover', ->
+    .on 'player-bust', ->
       @set 'message', 'Player bust'
       @set('money', @get('money') - @get('bet'))
       @reset()
@@ -64,6 +64,8 @@ class window.App extends Backbone.Model
         @set 'message', 'Dealer Blackjack!'
         @set('money', @get('money') - @get('bet'))
         @reset()
+      else
+        @trigger 'playing'
 
   reset: ->
     if @get('deck').length <= 13
@@ -72,3 +74,4 @@ class window.App extends Backbone.Model
       deck = @get 'deck'
     @set 'bet', 0
     @trigger 'reset'
+    @trigger 'game-over'

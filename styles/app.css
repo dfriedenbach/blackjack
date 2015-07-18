@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.hit-button,
+.stand-button {
+ visibility: hidden;
+}
+
 .card {
   float: left;
   border: solid 1px black;
