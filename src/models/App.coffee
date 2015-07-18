@@ -37,8 +37,7 @@ class window.App extends Backbone.Model
       @reset()
     , @
 
-  deal: ->
-    bet = +$('.make-bet')[1].value
+  deal: (bet) ->
     if bet < 5 or bet > 50
       alert 'All bets must be between $5 and $50'
     else if @get('money') - bet < 0
@@ -71,7 +70,5 @@ class window.App extends Backbone.Model
       @set 'deck', deck = new Deck()
     else
       deck = @get 'deck'
-    # @set 'playerHand', new Hand [], deck
-    # @set 'dealerHand', new Hand [], deck, true
     @set 'bet', 0
     @trigger 'reset'
