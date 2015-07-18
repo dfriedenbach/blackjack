@@ -16,9 +16,6 @@ class window.Hand extends Backbone.Collection
 
   double: ->
     @trigger 'double'
-    @hit()
-    if @minScore() <= 21
-      @stand()
 
   dealerTurn: ->
     @at(0).flip()

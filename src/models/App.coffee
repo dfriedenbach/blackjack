@@ -40,7 +40,13 @@ class window.App extends Backbone.Model
 
     @get 'playerHand'
     .on 'double', ->
-      @set('bet', @get('bet') * 2)
+      if @get('money') >= @get('bet') * 2
+        @set('bet', @get('bet') * 2)
+        @get('playerHand').hit()
+        if @get('playerHand').minScore() <= 21
+          @get('playerHand').stand()
+      else
+        alert 'You don\'t have that much money'
     , @
 
     @get 'playerHand'
