@@ -1,6 +1,6 @@
 class window.AppView extends Backbone.View
   template: _.template '
-    <button class="hit-button">Hit</button> <button class="stand-button">Stand</button> <button class="deal-button">Deal</button>
+    <button class="hit-button">Hit</button> <button class="stand-button">Stand</button> <button class="double-button">Double Down</button> <button class="deal-button">Deal</button>
     <p class="message-box"><%= message %></p>
     <p class="current-money">Current money: $<%= money %></p>
     <p class="current-bet">Current bet: $<%= bet %></p>
@@ -12,6 +12,7 @@ class window.AppView extends Backbone.View
   events:
     'click .hit-button': -> @model.get('playerHand').hit()
     'click .stand-button': -> @model.get('playerHand').stand()
+    'click .double-button': -> @model.get('playerHand').double()
     'click .deal-button': -> @model.deal(+$('.make-bet')[1].value)
 
   initialize: ->
@@ -25,12 +26,17 @@ class window.AppView extends Backbone.View
       $('.deal-button').css 'visibility', 'hidden'
       $('.hit-button').css 'visibility', 'visible'
       $('.stand-button').css 'visibility', 'visible'
+      $('.double-button').css 'visibility', 'visible'
     , @
 
     @model.on 'game-over', ->
       $('.deal-button').css 'visibility', 'visible'
       $('.hit-button').css 'visibility', 'hidden'
       $('.stand-button').css 'visibility', 'hidden'
+    , @
+
+    @model.on 'hit', ->
+      $('.double-button').css 'visibility', 'hidden'
     , @
 
   render: ->

@@ -4,6 +4,7 @@ class window.Hand extends Backbone.Collection
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
+    @trigger 'hit'
     newCard = @deck.pop()
     @add(newCard)
     if @minScore() > 21 and not @isDealer
@@ -12,6 +13,12 @@ class window.Hand extends Backbone.Collection
 
   stand: ->
     @trigger 'stand'
+
+  double: ->
+    @trigger 'double'
+    @hit()
+    if @minScore() <= 21
+      @stand()
 
   dealerTurn: ->
     @at(0).flip()

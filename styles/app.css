@@ -1,9 +1,20 @@
 .message-box {
   text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 36px;
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  border-radius: 10px;
+  background-image: url(../img/wood_texture.jpg);
+  color: white;
 }
 
 .hit-button,
-.stand-button {
+.stand-button,
+.double-button {
  visibility: hidden;
 }
 
@@ -24,4 +35,14 @@
 
 .hand {
   overflow: auto;
+}
+
+body {
+  background-image: url(../img/casino.jpg);
+  background-size: cover;
+}
+
+h2, p, span {
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

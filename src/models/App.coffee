@@ -38,6 +38,16 @@ class window.App extends Backbone.Model
       @reset()
     , @
 
+    @get 'playerHand'
+    .on 'double', ->
+      @set('bet', @get('bet') * 2)
+    , @
+
+    @get 'playerHand'
+    .on 'hit', ->
+      @trigger 'hit'
+    , @
+
   deal: (bet) ->
     if bet < 5 or bet > 50
       alert 'All bets must be between $5 and $50'
