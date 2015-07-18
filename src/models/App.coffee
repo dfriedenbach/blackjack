@@ -8,6 +8,7 @@ class window.App extends Backbone.Model
     @set 'dealerHand', new Hand [], deck, true
     @set 'money', 200
     @set 'bet', 0
+    @set 'lastBet', 5
 
   playerEventListeners: ->
     @get 'playerHand'
@@ -44,6 +45,7 @@ class window.App extends Backbone.Model
       alert 'You don\'t have that much money'
     else
       @set 'bet', bet
+      @set 'lastBet', bet
       @set 'playerHand', @get('deck').dealPlayer()
       @set 'dealerHand', @get('deck').dealDealer()
       @playerEventListeners()

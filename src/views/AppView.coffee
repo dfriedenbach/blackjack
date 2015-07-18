@@ -4,7 +4,7 @@ class window.AppView extends Backbone.View
     <p class="message-box"><%= message %></p>
     <p class="current-money">Current money: $<%= money %></p>
     <p class="current-bet">Current bet: $<%= bet %></p>
-    <span class="make-bet">Make a bet: </span><input class="make-bet" name="make-bet" type="number" value="5" min="5" max="50" step="1" />
+    <span class="make-bet">Make a bet: </span><input class="make-bet" name="make-bet" type="number" value="<%= lastBet %>" min="5" max="50" step="1" />
     <div class="player-hand-container"></div>
     <div class="dealer-hand-container"></div>
   '
