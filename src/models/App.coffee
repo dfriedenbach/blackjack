@@ -65,7 +65,7 @@ class window.App extends Backbone.Model
       @set 'deck', deck = new Deck()
     else
       deck = @get 'deck'
-    @set 'playerHand', new Hand [], deck
-    @set 'dealerHand', new Hand [], deck, true
+    # @set 'playerHand', new Hand [], deck
+    # @set 'dealerHand', new Hand [], deck, true
     @set 'bet', 0
     @trigger 'reset'
