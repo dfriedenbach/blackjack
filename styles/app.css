@@ -8,6 +8,7 @@
 }
 
 .covered {
+  text-indent: -9999;
   background-color: black;
 }
 
