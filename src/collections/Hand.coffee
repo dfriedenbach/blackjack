@@ -39,4 +39,18 @@ class window.Hand extends Backbone.Collection
   bestScore: ->
     if @scores()[1] > 21 then @scores()[0] else @scores()[1]
 
+  dealerMinScore: -> @reduce (score, card) ->
+    score + card.get 'value'
+  , 0
+
+  dealerHasAce: -> @reduce (memo, card) ->
+    memo or card.get('value') is 1
+  , 0
+
+  dealerScores: ->
+    [@dealerMinScore(), @dealerMinScore() + 10 * @dealerHasAce()]
+
+  dealerBestScore: ->
+    if @dealerScores()[1] > 21 then @dealerScores()[0] else @dealerScores()[1]
+
 
