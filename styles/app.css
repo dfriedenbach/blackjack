@@ -5,11 +5,12 @@
   border-radius: 5px;
   height: 140px;
   margin-right: 20px;
+  background-size: contain;
 }
 
 .covered {
   text-indent: -9999;
-  background-color: black;
+  background-image: url(../img/card-back.png);
 }
 
 .hand {
